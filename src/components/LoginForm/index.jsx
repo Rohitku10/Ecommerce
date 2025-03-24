@@ -8,11 +8,17 @@ import './index.css'
 const LoginForm = () =>{
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
+    const [error,submitError] = useState(false)
     const navigate = useNavigate();
 
-    const onSubmitSuccess = () => {
-    navigate('/');
+    const onSubmitSuccess = jwt_token => {
+        Cookies.set('jwt_token',jwt_token,{expires:30})
+        navigate('/');
     };
+
+    const onSubmitFailure = error_msg =>{
+        submitError(true)
+    }
 
 
     
@@ -23,11 +29,20 @@ const LoginForm = () =>{
         const url = 'https://apis.ccbp.in/login';
         const options={
             method:"POST",
-            body:JSON.stringify(userDetails)
-        }
-        const response = await fetch(url,options)
-        if(response.ok){
-            onSubmitSuccess();
+            headers: { "Content-Type": "application/json" },
+            body:JSON.stringify(userDetails),
+        };
+        try {
+            const response = await fetch(url, options);
+            const data = await response.json();
+            if (response.ok === true) {
+                this.onSubmitSuccess(data.jwt_token)
+            } else {
+                this.onSubmitFailure(data.error_msg)
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Something went wrong. Please try again.");
         }
     }
 
@@ -39,7 +54,7 @@ const LoginForm = () =>{
         <input
         type="text"
         id="username"
-        className="username-input-filed"
+        className="username-input-field"
         value={username}
         onChange={(e)=> setUsername(e.target.value)}
         />
@@ -53,7 +68,7 @@ const LoginForm = () =>{
         <input
         type="password"
         id="password"
-        className="password-input-filed"
+        className="password-input-field"
         value={password}
         onChange={(e)=> setPassword(e.target.value)}
         />
