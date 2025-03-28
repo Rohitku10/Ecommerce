@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
 import './index.css'
+import Cookies from 'js-cookie'
 
 
 
@@ -8,7 +9,7 @@ import './index.css'
 const LoginForm = () =>{
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
-    const [error,submitError] = useState(false)
+    const [error,setError] = useState(false)
     const navigate = useNavigate();
 
     const onSubmitSuccess = jwt_token => {
@@ -17,7 +18,7 @@ const LoginForm = () =>{
     };
 
     const onSubmitFailure = error_msg =>{
-        submitError(true)
+        setError(error_msg)
     }
 
 
@@ -29,16 +30,15 @@ const LoginForm = () =>{
         const url = 'https://apis.ccbp.in/login';
         const options={
             method:"POST",
-            headers: { "Content-Type": "application/json" },
             body:JSON.stringify(userDetails),
         };
         try {
             const response = await fetch(url, options);
             const data = await response.json();
             if (response.ok === true) {
-                this.onSubmitSuccess(data.jwt_token)
+                onSubmitSuccess(data.jwt_token)
             } else {
-                this.onSubmitFailure(data.error_msg)
+                onSubmitFailure(data.error_msg)
             }
         } catch (error) {
             console.error("Error:", error);
@@ -98,6 +98,7 @@ const LoginForm = () =>{
             <button type="submit" className="login-button">
                 Login
             </button>
+            {error && <p className="error-message">{error}</p>}
             </form>
         </div>
     )
