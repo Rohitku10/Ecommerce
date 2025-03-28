@@ -1,11 +1,22 @@
 import Header from "../Header";
-import {Link} from 'react-router-dom'
-import './index.css'
+import { Link,useNavigate} from "react-router-dom";
+import Cookies from 'js-cookie'
+import "./index.css";
+import { useEffect } from "react";
 
+const Home = () => {
+  const jwtToken = Cookies.get('jwt_token')
+  const navigate = useNavigate();
 
-const Home = () => (
+  useEffect(()=>{
+    if(!jwtToken){
+      navigate("/login");
+    }
+  },[jwtToken, navigate]);
+
+  return(
   <>
-    <Header/>
+    <Header />
     <div className="home-container">
       <div className="home-content">
         <h1 className="home-heading">Clothes That Get YOU Noticed</h1>
@@ -34,6 +45,7 @@ const Home = () => (
       />
     </div>
   </>
-);
+  )
+};
 
-export default Home
+export default Home;

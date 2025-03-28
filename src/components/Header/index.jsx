@@ -1,7 +1,14 @@
-import {Link} from 'react-router-dom'
-import './index.css'
+import { Link,useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie'
+import "./index.css";
 
-const Header = () => (
+const Header = () => {
+  const navigate = useNavigate();
+  const onClickLogout = () =>{
+    Cookies.remove('jwt_token')
+    navigate("/login")
+  }
+  return(
   <nav className="nav-header">
     <div className="nav-content">
       <img
@@ -26,10 +33,18 @@ const Header = () => (
           </Link>
         </li>
       </ul>
-      <button type="button" className="logout-desktop-btn">
+      <button
+        type="button"
+        className="logout-desktop-btn"
+        onClick={onClickLogout}
+      >
         Logout
       </button>
-      <button type="button" className="logout-mobile-btn">
+      <button
+        type="button"
+        className="logout-mobile-btn"
+        onClick={onClickLogout}
+      >
         <img
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-log-out-img.png"
           alt="logout icon"
@@ -38,5 +53,6 @@ const Header = () => (
       </button>
     </div>
   </nav>
-)
-export default Header
+  )
+};
+export default Header;
