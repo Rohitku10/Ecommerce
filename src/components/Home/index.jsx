@@ -5,14 +5,14 @@ import "./index.css";
 import { useEffect } from "react";
 
 const Home = () => {
-  const jwtToken = Cookies.get('jwt_token')
-  const navigate = useNavigate();
+  // const jwtToken = Cookies.get('jwt_token')
+  // const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(!jwtToken){
-      navigate("/login");
-    }
-  },[jwtToken, navigate]);
+  // useEffect(()=>{
+  //   if(!jwtToken){
+  //     navigate("/login");
+  //   }
+  // },[jwtToken, navigate]);
 
   return(
   <>

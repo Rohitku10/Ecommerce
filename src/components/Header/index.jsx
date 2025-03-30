@@ -1,6 +1,7 @@
-import { Link,useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Cookies from 'js-cookie'
 import "./index.css";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();

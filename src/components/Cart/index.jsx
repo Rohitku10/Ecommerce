@@ -6,14 +6,14 @@ import { useEffect } from "react";
 
 
 const Cart = () =>{
-    const jwtToken = Cookies.get('jwt_token')
-    const navigate = useNavigate();
+    // const jwtToken = Cookies.get('jwt_token')
+    // const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(!jwtToken){
-        navigate("/login");
-        }
-    },[jwtToken, navigate]);
+    // useEffect(()=>{
+    //     if(!jwtToken){
+    //     navigate("/login");
+    //     }
+    // },[jwtToken, navigate]);
     return(
     <>
     <Header/>
