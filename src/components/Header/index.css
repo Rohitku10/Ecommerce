@@ -1,6 +1,7 @@
 .nav-header{
     display: flex;
     justify-content: center;
+    flex-grow: 1;
 }
 
 .website-logo{

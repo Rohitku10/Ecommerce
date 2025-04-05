@@ -4,16 +4,19 @@
     font-size: 32px;
     font-weight: 500;
     margin-top: 48px;
+    
   }
 
-  /* .products-list-container{
+  .products-list-container{
     display: flex;
+    flex-direction: column;
     padding-left: 10px;
-    justify-content: column;
-    background-color: green;
-    margin-left: 10px;
-    margin: 10px;
-  } */
+    justify-content: center;
+    align-items: center;
+    /* background-color: green; */
+    /* margin-left: 10px;
+    margin: 10px; */
+  }
   
   .primedeals-list {
     display: flex;
@@ -21,6 +24,8 @@
     padding-left: 0;
     width: 60vw;
     margin-left: 10px;
+    /* margin: 0px auto; */
+
   }
   
   .register-prime-image {
@@ -35,4 +40,31 @@
     min-height: 60vh;
   }
   
+  
+
+   .primedeals-list-heading {
+    color: #475569;
+    font-family: 'Roboto';
+    font-size: 32px;
+    font-weight: 500;
+    margin-top: 48px;
+  }
+  
+  .primedeals-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+  }
+  
+  
+  .register-prime-image {
+    margin-top: 30px;
+  }
+  
+  .primedeals-loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+  }
   
