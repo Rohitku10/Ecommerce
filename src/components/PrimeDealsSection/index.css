@@ -5,15 +5,27 @@
     font-weight: 500;
     margin-top: 48px;
   }
+
+  /* .products-list-container{
+    display: flex;
+    padding-left: 10px;
+    justify-content: column;
+    background-color: green;
+    margin-left: 10px;
+    margin: 10px;
+  } */
   
   .primedeals-list {
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
+    width: 60vw;
+    margin-left: 10px;
   }
   
   .register-prime-image {
     margin-top: 30px;
+    height: 20%;
   }
   
   .primedeals-loader-container {
@@ -22,4 +34,5 @@
     align-items: center;
     min-height: 60vh;
   }
+  
   
