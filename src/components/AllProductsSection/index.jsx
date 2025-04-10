@@ -21,8 +21,8 @@ const AllProductsSection = () => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const apiUrl = "https://apis.ccbp.in/products";
-      // const apiUrl = "https://apis.ccbp.in/products?sort_by=${activeOptionId}`";
+      // const apiUrl = "https://apis.ccbp.in/products";
+      const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}`;
       const jwtToken = Cookies.get("jwt_token");
       const options = {
         headers: {
